@@ -37,6 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+        #requirements
+    'corsheaders',
+    'rest_framework',
+    
+    #apps
+    'v1.accounts',
+    'v1.vendors',
 ]
 
 MIDDLEWARE = [
@@ -112,6 +120,39 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+)
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-disposition',
+    'content-type',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    # Custom added
+    'user-id',
+    'bearer',
+    'token',
+    'salt',
+    'timezone',
+    'language',
+    'otp',
+    'local-timestamp'
+]
+CORS_ALLOW_CREDENTIALS = True
+
+AUTH_USER_MODEL = "accounts.ProjectUser"
 
 
 # Static files (CSS, JavaScript, Images)
