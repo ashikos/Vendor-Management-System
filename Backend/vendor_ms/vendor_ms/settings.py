@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #apps
     'v1.accounts',
     'v1.vendors',
+    'v1.orders'
 ]
 
 MIDDLEWARE = [
