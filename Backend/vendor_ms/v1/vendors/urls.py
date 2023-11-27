@@ -1,12 +1,14 @@
 from rest_framework.routers import SimpleRouter
 
 from django.urls import path
-from . import views 
+from v1.vendors import views
+from v1.vendors.models import *
+
 
 router = SimpleRouter()
 
 
-# router.register(r'groups', group.GroupView, basename=Group)
+router.register(r'', views.VendorView, basename=Vendor)
 
 
 

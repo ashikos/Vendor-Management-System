@@ -41,6 +41,10 @@ class Order(AbstractbaseModel):
     issue_date = models.DateTimeField()
     acknowledgment_date = models.DateTimeField()
 
+    def __str__(self):
+        """Object Name in Django Model."""
+        return f'{self.id}: {self.vendor.first_name}-{self.po_number}'
+
 
 
 

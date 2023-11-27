@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 
 
 
@@ -22,7 +23,7 @@ class AbstractbaseModel(models.Model):
         blank=True, related_name="updater_%(class)s_objects",
         on_delete=models.SET_NULL)
     updated_on = models.DateTimeField(auto_now=True)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(default=timezone.now)
 
     class Meta:
         abstract = True  # model is not meant to be instantiated directly. It is to be  used as a base class for other models.

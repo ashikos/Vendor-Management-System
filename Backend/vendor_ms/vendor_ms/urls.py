@@ -8,6 +8,6 @@ urlpatterns = [
     path('djadmin/', admin.site.urls),
 
     path("v1/accounts/", include("v1.accounts.urls")),
-    path("v1/vendors/", include("v1.vendors.urls"))
+    path("api/vendors/", include("v1.vendors.urls"))
     
 ]
