@@ -20,7 +20,10 @@ class VendorSerializer(serializers.ModelSerializer):
         """
         
         vendor = super().create(validated_data)
-        code = vendor.generate_vendor_code()
+        vendor.generate_vendor_code()
+
+        perfomance, created = models.Perfomance.objects.get_or_create(
+            vendor=vendor)
         
         return vendor
 

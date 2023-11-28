@@ -1,12 +1,15 @@
 from rest_framework.routers import SimpleRouter
 
+from v1.orders.models import *
+from v1.orders import views 
+
 from django.urls import path
-from . import views 
+
 
 router = SimpleRouter()
 
 
-# router.register(r'groups', group.GroupView, basename=Group)
+router.register(r'', views.OrderView, basename=Order)
 
 
 

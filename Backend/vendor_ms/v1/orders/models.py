@@ -1,10 +1,10 @@
 from django.db import models
+from django.db.models import F
 
-from django.conf import settings
-from django.contrib.auth.models import AbstractUser
+from common.models import AbstractbaseModel
+from common.library import encode, decode
 
 from v1.vendors.models import *
-from common.models import AbstractbaseModel
 from v1.orders.constants import StatusTypes
 
 # Create your models here.
@@ -28,23 +28,49 @@ class Order(AbstractbaseModel):
     """
 
     vendor = models.ForeignKey(
-        Vendor, on_delete=models.CASCADE, related_name="orders")
+        Vendor, on_delete=models.CASCADE, related_name="orders", 
+        null=True, blank=True)
     po_number = models.CharField(
         default="", max_length=100, null=True, blank=True, unique=True)
-    order_date = models.DateTimeField()
-    delivery_date = models.DateTimeField()
-    items = models.JSONField()
-    quantity = models.IntegerField()
+    order_date = models.DateTimeField(null=True, blank=True)
+    expected_delivery_date = models.DateTimeField(null=True, blank=True)
+    delivered_on = models.DateTimeField(null=True, blank=True)
+    quantity = models.IntegerField(default=0)
     status = models.IntegerField(
         default=StatusTypes.Pending, choices=StatusTypes.choices())
     quality_rating = models.FloatField(null=True, blank=True)
-    issue_date = models.DateTimeField()
-    acknowledgment_date = models.DateTimeField()
+    issue_date = models.DateTimeField(null=True, blank=True)
+    acknowledgment_date = models.DateTimeField(null=True, blank=True)
+
+    def default_items():
+        return {}
+    
+    items = models.JSONField(default=default_items)
+
 
     def __str__(self):
         """Object Name in Django Model."""
-        return f'{self.id}: {self.vendor.first_name}-{self.po_number}'
+        return f'{self.id}: {self.vendor.name}-{self.po_number}'
+    
 
+    
+    def generate_po_number(self):
+        """Function to generate unique po_code for every order"""
+
+        try:
+            previous_order = Order.objects.all().order_by("-id")[1]
+        except:
+            previous_order = None
+
+        if previous_order:
+            code = decode(previous_order.po_number)
+            code = code + 1
+        else:
+            code = 1000
+
+        self.po_number = encode(code)
+        self.save()
+        return self
 
 
 

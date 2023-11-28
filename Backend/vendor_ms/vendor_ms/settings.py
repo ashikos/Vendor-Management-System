@@ -160,3 +160,7 @@ AUTH_USER_MODEL = "accounts.ProjectUser"
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+HASHIDS_SALT = "NRTZZJEDKDMRSPR"
+HASHID_MIN_LENGTH = 6
