@@ -17,13 +17,15 @@ class Order(AbstractbaseModel):
             po_number: CharField - Unique number identifying the PO.
             vendor: ForeignKey - Link to the Vendor model.
             order_date: DateTimeField - Date when the order was placed.
-            delivery_date: DateTimeField - Expected or actual delivery date of the order.
+            delivery_date: DateTimeField - Expected or actual delivery date 
+                                                            of the order.
             items: JSONField - Details of items ordered.
             quantity: IntegerField - Total quantity of items in the PO.
             status: CharField - Current status of the PO
-            quality_rating: FloatField - Rating given to the vendor for this PO (nullable).
+            quality_rating: FloatField - Rating given to the vendor for this PO.
             issue_date: DateTimeField - Timestamp when the PO was issued to the vendor.
-            acknowledgment_date: DateTimeField, nullable - Timestamp when the vendor acknowledged the PO.
+            acknowledgment_date: DateTimeField, nullable - Timestamp when the 
+                                                    vendor acknowledged the PO.
 
     """
 
@@ -45,7 +47,7 @@ class Order(AbstractbaseModel):
     def default_items():
         return {}
     
-    items = models.JSONField(default=default_items)
+    items = models.JSONField(default=default_items, null=True, blank=True)
 
 
     def __str__(self):

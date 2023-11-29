@@ -26,7 +26,7 @@ def encode(value):
     """
     hasher = Hashids(
         min_length=settings.HASHID_MIN_LENGTH,
-        salt=settings.HASHHID_SALT)
+        salt=settings.HASHID_SALT)
     try:
         value = int(value)
         return hasher.encode(value)
@@ -45,7 +45,7 @@ def decode(value):
     """
     hasher = Hashids(
         min_length=settings.HASHID_MIN_LENGTH,
-        salt=settings.HASHHID_SALT)
+        salt=settings.HASHID_SALT)
     try:
         return hasher.decode(value)[0]
     except:
