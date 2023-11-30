@@ -18,7 +18,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('djadmin/', admin.site.urls),
 
-    path('v1/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('api/swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
     path("api/accounts/", include("v1.accounts.urls")),
     path("api/vendors/", include("v1.vendors.urls")),

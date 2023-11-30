@@ -49,6 +49,10 @@ API Endpoints
     User need to singup and login inorder to access all other Endpoints.
     A JWT token is received after the succefull login, these tokens sholud be saved in the cookies in order to 
     acccess other api Endpoints.
+   
+   Swagger:
+      All apis are documented using swagger
+        /api/swagger/ 
     
     Authentication:
         POST /api/accounts/signup/ : create a new user
