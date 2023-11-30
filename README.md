@@ -50,8 +50,7 @@ API Endpoints
     A JWT token is received after the succefull login, these tokens sholud be saved in the cookies in order to 
     acccess other api Endpoints.
    
-   Swagger:
-      All apis are documented using swagger
+    Swagger: All apis are documented using swagger
         /api/swagger/ 
     
     Authentication:
@@ -77,8 +76,6 @@ API Endpoints
     Vendor Performance Evaluation:
         GET /api/vendors/{vendor_id}/performance: Retrieve a vendor's performance metrics.
 
-    Update Acknowledgment:
-        POST /api/purchase_orders/{po_id}/acknowledge: Acknowledge a purchase order and trigger the recalculation of 		average response time.
 
 
 
