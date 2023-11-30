@@ -41,6 +41,9 @@ INSTALLED_APPS = [
         #requirements
     'corsheaders',
     'rest_framework',
+    'django_filters',
+    'rest_framework_swagger',
+    'drf_yasg',
     
     #apps
     'v1.accounts',
@@ -87,6 +90,19 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+    'SWAGGER_SETTINGS': {
+        'USE_SESSION_AUTH': True,
+        'DOC_EXPANSION': 'list',
+        'APIS_SORTER': 'alphabetical',
+        'JSON_EDITOR': True,
+    },
 }
 
 

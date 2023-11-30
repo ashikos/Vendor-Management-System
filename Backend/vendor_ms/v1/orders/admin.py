@@ -11,6 +11,8 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = (
         'get_vendor_name', "po_number", "order_date", "delivered_on", 
         "quality_rating" )
+    
+    list_filter = ('vendor',)
 
 
 admin.site.register(Order, OrderAdmin)

@@ -26,5 +26,23 @@ class VendorSerializer(serializers.ModelSerializer):
             vendor=vendor)
         
         return vendor
+    
+
+class VendorPerfomanceSerializer(serializers.Serializer):
+    # Define your serializer fields here if needed
+
+    def to_representation(self, instance):
+
+        perfomance = instance.perfomance.all().first()
+        data = {
+            "name": instance.name,
+            "vendor_code": instance.vendor_code,
+            "on_time_delivery_rate": perfomance.on_time_delivery_rate,
+            "quality_rating_avg" :  perfomance.quality_rating_avg,
+            "average_response_time" :  perfomance.average_response_time,
+            "fulfillment_rate" :  perfomance.fulfillment_rate,
+        }
+
+        return data
 
     
