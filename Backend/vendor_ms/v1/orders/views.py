@@ -41,5 +41,5 @@ class OrderView(viewsets.ModelViewSet):
     queryset = ord_models.Order.objects.all()
     filter_class = ord_filters.VendorFilter
     serializer_class = ord_serializers.OrderSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    # permission_classes = (permissions.IsAuthenticated,)
     

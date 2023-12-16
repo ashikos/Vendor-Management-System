@@ -17,7 +17,7 @@ class  VendorView(viewsets.ModelViewSet):
     queryset = ven_models.Vendor.objects.all()
     serializer_class = ven_serializers.VendorSerializer
     filter_class = ven_filters.VendorFilter
-    permission_classes = (permissions.IsAuthenticated,)
+    # permission_classes = (permissions.IsAuthenticated,)
 
     @action(detail=True, methods=['get'])
     def performance(self, request, pk=None, **args):

@@ -25,7 +25,7 @@ SECRET_KEY = '^nbkmmuld=ki@=9n005354tzeq#btw_n=egn9a!_=s6+ld+ble'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', 'localhost']
 
 
 # Application definition
@@ -85,12 +85,23 @@ WSGI_APPLICATION = 'vendor_ms.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'f1fBEf2111cD*adg*ABeaA6ECefBAF*A',
+        'PORT': '54098',
+        'HOST': 'viaduct.proxy.rlwy.net'
     }
 }
+
 
 
 REST_FRAMEWORK = {
