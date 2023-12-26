@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "vendor_ms/wsgi.py",
+      "src": "vendor_ms/vendor_ms/wsgi.py",
       "use": "@vercel/python",
       "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
     },
@@ -21,7 +21,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "vendor_ms/wsgi.py"
+      "dest": "vendor_ms/vendor_ms/wsgi.py"
     }
   ]
 }
